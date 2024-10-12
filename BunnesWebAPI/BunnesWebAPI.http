@@ -1,0 +1,6 @@
+@BunnesWebAPI_HostAddress = http://localhost:5028
+
+GET {{BunnesWebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
