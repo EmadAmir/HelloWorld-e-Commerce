@@ -1,6 +1,6 @@
-Ecommerce Store Using Angular, .NET and Stripe for payment processing. 
+<h1>Ecommerce Store Using Angular, .NET and Stripe for payment processing.</h1> 
 
-PROJECTS
-API: Manages Http request and responses
-Infrastructure: Communicate with the DB
-Core: Contains the business entities.
+<h3>PROJECTS</h3>
+API: <i>Manages Http request and responses.</i> </br>
+Infrastructure: <i>Communicate with the DB. </i> </br>
+Core: <i>Contains the business entities.</i> </br>
