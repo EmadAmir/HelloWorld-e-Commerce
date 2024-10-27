@@ -14,7 +14,21 @@ builder.Services.AddDbContext<StoreContext>(option => {
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy("AllowSpecificOrigins",
+        policy => { 
+            policy.WithOrigins("https://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowSpecificOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
