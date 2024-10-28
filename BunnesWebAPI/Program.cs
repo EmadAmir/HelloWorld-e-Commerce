@@ -1,4 +1,5 @@
 using Core.Interfaces;
+using HelloWorldWebAPI.Middleware;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,13 +21,16 @@ builder.Services.AddCors(option =>
 {
     option.AddPolicy("AllowSpecificOrigins",
         policy => { 
-            policy.WithOrigins("https://localhost:4200")
+            policy.WithOrigins("https://localhost:4200","http://localhost:4200")
             .AllowAnyHeader()
             .AllowAnyMethod();
         });
 });
 
 var app = builder.Build();
+
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors("AllowSpecificOrigins");
 
