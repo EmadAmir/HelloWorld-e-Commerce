@@ -1,27 +1,24 @@
 ﻿using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
+using HelloWorldWebAPI.RequestHelpers;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace HelloWorldWebAPI.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductsController(IGenericRepository<Product> _repo) : ControllerBase
+
+    public class ProductsController(IGenericRepository<Product> _repo) : BaseApiController
     {
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(string? brand, string? type, string? sort)
+        public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(
+            [FromQuery]ProductSpecParams productSpecParams)
         {
-             var spec = new ProductSpecification(brand, type, sort);
+             var spec = new ProductSpecification(productSpecParams);
 
-            var products = await _repo.ListAsync(spec);
-
-            //var products = await _repo.ListAllAsync();
-
-            return Ok(products);
+            return await CreatePagedResult<Product>(_repo, spec, productSpecParams.PageIndex,productSpecParams.PageSize);
         }
 
         [HttpGet]
