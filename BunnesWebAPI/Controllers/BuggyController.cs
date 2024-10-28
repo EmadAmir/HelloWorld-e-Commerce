@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using HelloWorldWebAPI.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HelloWorldWebAPI.Controllers
@@ -30,8 +31,8 @@ namespace HelloWorldWebAPI.Controllers
             throw new Exception("There is an internal server error");
         }
 
-        [HttpGet("validationerror")]
-        public IActionResult GetValidationError(Product product)
+        [HttpPost("validationerror")]
+        public IActionResult GetValidationError(CreateProductDto product)
         {
             return Ok();
         }
