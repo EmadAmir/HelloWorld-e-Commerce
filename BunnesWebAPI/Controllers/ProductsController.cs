@@ -1,5 +1,6 @@
 ﻿using Core.Entities;
 using Core.Interfaces;
+using Core.Specifications;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,13 @@ namespace HelloWorldWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(string? brand, string? type, string? sort)
         {
-            return Ok(await _repo.ListAllAsync());
+             var spec = new ProductSpecification(brand, type, sort);
+
+            var products = await _repo.ListAsync(spec);
+
+            //var products = await _repo.ListAllAsync();
+
+            return Ok(products);
         }
 
         [HttpGet]
@@ -33,17 +40,17 @@ namespace HelloWorldWebAPI.Controllers
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<Product>>> GetProductBrands() 
         {
-            // Todo: needs implementation
+            var spec = new BrandListSpecification();
 
-            return Ok();
+            return Ok(await _repo.ListAsync(spec));
         }
 
         [HttpGet("types")]
         public async Task<ActionResult<IReadOnlyList<Product>>> GetProductTypes()
         {
-            // Todo: needs implementation
+            var spec = new TypeListSpecification();
 
-            return Ok();
+            return Ok(await _repo.ListAsync(spec));
         }
 
         [HttpPost]
@@ -63,7 +70,7 @@ namespace HelloWorldWebAPI.Controllers
         public async Task<ActionResult<Product>> UpdateProduct(int id, Product product)
         {
 
-            if (product.Id != id || !_repo.Exists(id))
+            if (product.Id != id || !ProductExists(id))
             {
                 return BadRequest("Product not found or does not exist");
             }
@@ -76,8 +83,6 @@ namespace HelloWorldWebAPI.Controllers
             }
 
             return BadRequest("Problem updating the Products");
-
-
 
         }
 
@@ -101,7 +106,10 @@ namespace HelloWorldWebAPI.Controllers
             return BadRequest("Problem deleting the Product");
         }
 
-
+        private bool ProductExists(int id) 
+        { 
+            return _repo.Exists(id);
+        }
 
 
     }
