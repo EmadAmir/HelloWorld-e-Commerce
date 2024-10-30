@@ -1,13 +1,13 @@
 <app-header></app-header>
-<!-- 
+
 <div class="container mt-6">
   <h2 class="text-3xl font-bold underline">
     Welcome to {{ title }} from Hello World
   </h2>
 
   <ul>
-    <li *ngFor="let product of products">
-      <b>{{ product.name }}</b>
-    </li>
+    @for(product of products;track product.id){
+    <li>{{ product.name }}</li>
+    }
   </ul>
-</div> -->
+</div>

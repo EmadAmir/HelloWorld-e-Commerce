@@ -4,6 +4,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { HttpClient } from '@angular/common/http';
 import { NgFor } from '@angular/common';
 import { ShopService } from './core/services/shop.service';
+import { Product } from './shared/models/product';
 
 @Component({
   selector: 'app-root',
@@ -18,20 +19,13 @@ export class AppComponent implements OnInit {
   private shopServices = inject(ShopService);
   title = 'client';
 
-  products: any[] = [];
+  products: Product[] = [];
 
   ngOnInit(): void {
     this.shopServices.getProducts().subscribe({
-      next: (repsonse) => {
-        this.products = repsonse;
-        console.log(this.products);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-      complete: () => {
-        console.log('Request Completed!!');
-      },
+      next: (repsonse) => (this.products = repsonse.data),
+      error: (error) => console.log(error),
+      complete: () => console.log('Request Completed!!'),
     });
   }
 }
