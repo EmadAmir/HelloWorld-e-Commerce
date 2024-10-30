@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Pagination } from '../../shared/models/pagination';
+import { Product } from '../../shared/models/product';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +14,6 @@ export class ShopService {
   constructor() {}
 
   getProducts() {
-    return this.http.get<any>(this.baseUrl + 'products');
+    return this.http.get<Pagination<Product>>(this.baseUrl + 'products');
   }
 }
