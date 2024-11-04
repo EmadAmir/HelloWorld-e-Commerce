@@ -160,5 +160,113 @@
     "Type": "Boots",
     "Brand": "Angular",
     "QuantityInStock": 27
+  },
+  {
+    "Name": "Official Soccer Ball",
+    "Description": "High-quality soccer ball designed for professional matches. Durable and suitable for all weather conditions.",
+    "Price": 50,
+    "PictureUrl": "/images/products/soccer-ball.png",
+    "Type": "Sports-ball",
+    "Brand": "SoccerPro",
+    "QuantityInStock": 100
+  },
+  {
+    "Name": "React Soccer Ball",
+    "Description": "High-quality soccer ball designed for professional matches. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
+    "Price": 55,
+    "PictureUrl": "/images/products/soccer-ball2.png",
+    "Type": "Sports-ball",
+    "Brand": "SoccerPro",
+    "QuantityInStock": 17
+  },
+  {
+    "Name": "Angular Soccer Ball",
+    "Description": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.",
+    "Price": 60,
+    "PictureUrl": "/images/products/soccer-ball3.png",
+    "Type": "Sports-ball",
+    "Brand": "SoccerPro",
+    "QuantityInStock": 17
+  },
+  {
+    "Name": "Soccer Shin Guards",
+    "Description": "Protective soccer shin guards made from lightweight materials to ensure comfort and safety.",
+    "Price": 23,
+    "PictureUrl": "/images/products/shin-guards1.png",
+    "Type": "Sports-guards",
+    "Brand": "SoccerPro",
+    "QuantityInStock": 50
+  },
+  {
+    "Name": "React Shin Guards",
+    "Description": "Protective soccer shin guards made from lightweight materials to ensure comfort and safety.",
+    "Price": 29,
+    "PictureUrl": "/images/products/shin-guards2.png",
+    "Type": "Sports-guards",
+    "Brand": "SoccerPro",
+    "QuantityInStock": 100
+  },
+  {
+    "Name": "Angular Shin Guards",
+    "Description": "Protective soccer shin guards made from lightweight materials to ensure comfort and safety.",
+    "Price": 20,
+    "PictureUrl": "/images/products/shin-guards3.png",
+    "Type": "Sports-guards",
+    "Brand": "SoccerPro",
+    "QuantityInStock": 150
+  },
+  {
+    "Name": "React Football Helmet",
+    "Description": "Professional-grade football helmet offering maximum protection with modern design and ventilation.",
+    "Price": 120,
+    "PictureUrl": "/images/products/football-helmet1.png",
+    "Type": "Sports-Helmet",
+    "Brand": "React",
+    "QuantityInStock": 50
+  },
+  {
+    "Name": "GridIron Football Helmet",
+    "Description": "football helmet with a sleek, modern design. It features a sturdy face mask, protective padding, and ventilation holes for airflow.",
+    "Price": 100,
+    "PictureUrl": "/images/products/football-helmet2.png",
+    "Type": "Sports-Helmet",
+    "Brand": "GridIron",
+    "QuantityInStock": 50
+  },
+  {
+    "Name": "SoccerPro Football Helmet",
+    "Description": "vintage leather-like design with classic brown color and stitched seams.",
+    "Price": 20,
+    "PictureUrl": "/images/products/football-helmet3.png",
+    "Type": "Sports-Helmet",
+    "Brand": "SoccerPro",
+    "QuantityInStock": 50
+  },
+  {
+    "Name": "Football Gloves",
+    "Description": "Non-slip, durable football gloves providing excellent grip and comfort for all conditions.",
+    "Price": 20,
+    "PictureUrl": "/images/products/football-gloves1.png",
+    "Type": "Sports-gloves",
+    "Brand": "GridIron",
+    "QuantityInStock": 30
+  },
+  {
+    "Name": "React Football Gloves",
+    "Description": "football gloves with a futuristic silver and neon green design. The gloves feature a textured palm for superior grip and an armored, geometric pattern on the back for added protection.",
+    "Price": 40,
+    "PictureUrl": "/images/products/football-gloves2.png",
+    "Type": "Sports-gloves",
+    "Brand": "React",
+    "QuantityInStock": 80
+  },
+  {
+    "Name": "Angular Football Gloves",
+    "Description": "football gloves with an awesome, high-tech design. They feature matte black with glowing blue LED-like accents, a textured palm for grip, and sleek, armor-like padding for protection. Let me know if you'd like any further adjustments!",
+    "Price": 60,
+    "PictureUrl": "/images/products/football-gloves3.png",
+    "Type": "Sports-gloves",
+    "Brand": "Angular",
+    "QuantityInStock": 20
   }
 ]
