@@ -15,12 +15,14 @@ import {
   MatSelectionListChange,
 } from '@angular/material/list';
 import { ShopParams } from '../../shared/models/shopParams';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Pagination } from '../../shared/models/pagination';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shop',
   standalone: true,
   imports: [
-    MatCard,
     MatButton,
     ProductItemComponent,
     MatIcon,
@@ -28,6 +30,8 @@ import { ShopParams } from '../../shared/models/shopParams';
     MatMenu,
     MatSelectionList,
     MatListOption,
+    FormsModule,
+    MatPaginator,
   ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss',
@@ -36,9 +40,8 @@ export class ShopComponent implements OnInit {
   private dialogService = inject(MatDialog);
   private shopService = inject(ShopService);
   title = 'client';
-  // selectedBrands: string[] = [];
-  // selectedTypes: string[] = [];
-  // selectedSort: string = 'name';
+  pageSizeOptions = [5, 10, 15, 20, 25, 30, 35, 40];
+
   sortOptions = [
     { name: 'Alphabetical', value: 'name' },
     { name: 'Price: Low-High', value: 'priceAsc' },
@@ -47,7 +50,7 @@ export class ShopComponent implements OnInit {
 
   shopParams = new ShopParams();
 
-  products: Product[] = [];
+  products?: Pagination<Product>;
 
   ngOnInit(): void {
     this.initializeShop();
@@ -61,9 +64,21 @@ export class ShopComponent implements OnInit {
 
   getProducts() {
     this.shopService.getProducts(this.shopParams).subscribe({
-      next: (repsonse) => (this.products = repsonse.data),
+      next: (repsonse) => (this.products = repsonse),
       error: (error) => console.log(error),
     });
+  }
+
+  onSearchChange() {
+    this.shopParams.pageNumber = 1;
+    this.getProducts();
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.shopParams.pageNumber = event.pageIndex + 1;
+    this.shopParams.pageSize = event.pageSize;
+    console.log(event);
+    this.getProducts();
   }
 
   onSortChange(event: MatSelectionListChange) {
@@ -71,7 +86,7 @@ export class ShopComponent implements OnInit {
 
     if (selectionOption) {
       this.shopParams.sort = selectionOption.value;
-      //console.log(this.selectedSort);
+      this.shopParams.pageNumber = 1;
       this.getProducts();
     }
   }
@@ -91,6 +106,7 @@ export class ShopComponent implements OnInit {
       if (result) {
         console.log(result);
         this.shopParams.brands = result.selectedBrands;
+        this.shopParams.pageNumber = 1;
         this.shopParams.types = result.selectedTypes;
         this.getProducts();
       }
