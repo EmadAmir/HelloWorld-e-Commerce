@@ -3,6 +3,6 @@ export class ShopParams {
   types: string[] = [];
   sort: string = 'name';
   pageNumber = 1;
-  pageSize = 10;
+  pageSize: number = 10;
   search = '';
 }
